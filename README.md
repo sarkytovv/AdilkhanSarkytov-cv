@@ -1,0 +1,2 @@
+# AdilkhanSarkytov-cv
+cv / resume

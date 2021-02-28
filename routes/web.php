@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+use App\Models\Post;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +21,18 @@ Route::get('/', function () {
 });
 Route::get('/cv', function () {
     return view('cv');
+});
+
+
+Route::get('/post/create', function(){
+    DB::table('posts')->insert([
+        'id'=>1,
+        'title'=>'FirstPost',
+        'body'=>'Some text to first post'
+    ]);
+});
+
+Route::get('/post', function(){
+    $post = Post::find(1);
+    return $post;
 });

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
-
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,15 +24,17 @@ Route::get('/cv', function () {
 });
 
 
-Route::get('/post/create', function(){
+Route::get('/posts', function(){
     DB::table('posts')->insert([
-        'id'=>1,
+        
         'title'=>'FirstPost',
         'body'=>'Some text to first post'
     ]);
 });
 
-Route::get('/post', function(){
+Route::get('/posts/create', function(){
     $post = Post::find(1);
     return $post;
 });
+
+Route::get('/blog', [BlogController::class, 'index']);
